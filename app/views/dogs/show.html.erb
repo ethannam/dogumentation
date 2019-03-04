@@ -1,0 +1,29 @@
+<h1><%= @dog.name %></h1>
+
+<% if @dog.img_url %>
+  <%= image_tag @dog.img_url %>
+<% end %>
+
+<p>Breed: <%= @dog.breed %></p>
+<p>Size: <%= @dog.size.capitalize %></p>
+<p>Birthday: <%= @dog.birthday %></p>
+<p>Owner: <%= @owner.to_s %></p>
+<p>Owner Phone Number: <%= @owner.phone_num %></p>
+
+<h2>Care Instructions</h2>
+<% @instructions.each do |instruction| %>
+  <h4><%= instruction.header %></h4>
+  <p><%= instruction.content %></p>
+<% end %>
+
+<h2>In Case of Emergency</h2>
+<% if @vets %>
+  <% @vets.each do |vet| %>
+    <h3><%= vet.to_s %></h3>
+    <ul>
+        <li>Office Address: <%= vet.address %></li>
+        <li>Phone Number: <%= vet.phone_num %></li>
+        <li>Email: <%= vet.email %></li>
+    </ul>
+  <% end %>
+<% end %>
