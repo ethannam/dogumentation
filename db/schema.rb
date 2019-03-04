@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20190304192253) do
   create_table "instructions", force: :cascade do |t|
     t.string "header"
     t.string "content"
+    t.integer "dog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
