@@ -16,9 +16,10 @@ class DogsController < ApplicationController
   end
 
   def create
+    params[:dog][:user_id] = session[:user_id]
     dog = Dog.create(dog_params)
     if dog.valid?
-      redirect_to dog
+      redirect_to user_path(session[:user_id])
     else
       flash[:errors] = dog.errors.full_messages
       redirect_to new_dog_path
@@ -26,20 +27,24 @@ class DogsController < ApplicationController
   end
 
   def edit
-    @dog = Dog.where(username: params[:username]).first
+    @dog = Dog.find_by(username: params[:username])
   end
 
   def update
-    @dog = Dog.where(username: params[:username]).first
+    dog = Dog.find_by(username: params[:dog][:username])
     if dog.update(dog_params)
-      redirect_to dog
+      redirect_to user_path(session[:user_id])
     else
       flash[:errors] = dog.errors.full_messages
-      redirect_to edit_dog_path
+      redirect_to edit_dog_path(dog.username)
     end
   end
 
   def destroy
+    dog = Dog.find_by(username: params[:username])
+    owner = dog.user
+    dog.destroy
+    redirect_to owner
   end
 
   private # *************************

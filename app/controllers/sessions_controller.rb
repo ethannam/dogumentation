@@ -1,9 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :check_authorization, only: [:new, :create, :home, :destroy]
-
-  def home
-    render "layouts/home"
-  end
+  skip_before_action :check_authorization, only: [:new, :create, :destroy]
 
   def new
     render :login
@@ -13,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to dogs_path
+      redirect_to user
     else
       flash[:notice] = "Invalid username or password!"
       redirect_to login_path

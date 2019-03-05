@@ -5,8 +5,13 @@
 <h2>Your Dogs</h2>
 <ul>
   <% @dogs.each do |dog| %>
-    <li><%= link_to dog.name, dog_path(dog.username) %></li>
+    <li>
+      <%= link_to dog.name, dog_path(dog.username) %> | 
+      <%= link_to "Edit", edit_dog_path(dog.username) %> |
+      <%= link_to "Delete", dog_path(dog.username), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
   <% end %>
 </ul>
 
+<%= link_to "Add New Dog", new_dog_path %><br><br>
 <%= button_to "Log Out", logout_path, method: :delete %>

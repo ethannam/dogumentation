@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
-  before_action :check_authorization
+  before_action :check_authorization, except: [:home]
   helper_method :current_session_user
+
+  def home
+    render "layouts/home"
+  end
 
   def current_session_user
     User.find_by(id: session[:user_id])

@@ -2,16 +2,26 @@ class UsersController < ApplicationController
   skip_before_action :check_authorization, only: [:new, :create]
 
   def index
-    @users = User.all
+    redirect_to user_path(current_session_user.id)
+      # @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
-    @dogs = @user.dogs
+    if params[:id].to_i == current_session_user.id
+      @user = current_session_user
+      @dogs = @user.dogs
+      render :show
+    else
+      redirect_to user_path(current_session_user.id)
+    end
   end
 
   def new
-    @user = User.new
+    if current_session_user
+      redirect_to user_path(current_session_user.id)
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -26,7 +36,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    if params[:id].to_i == current_session_user.id
+      @user = current_session_user
+      render :edit
+    else
+      redirect_to edit_user_path(current_session_user.id)
+    end
   end
 
   def update
@@ -44,4 +59,10 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :phone_num, :email, :username, :password)
   end
+
+  # def check_privileges
+  #   # If the current session user is a regular user, return false
+  #   # Else if the current session user is an admin, return true
+  #   false
+  # end
 end
