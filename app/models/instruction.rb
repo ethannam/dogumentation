@@ -4,5 +4,4 @@ class Instruction < ApplicationRecord
   validates :header, presence: true
   validates :content, presence: true
   validates :dog_id, presence: true
-
 end
