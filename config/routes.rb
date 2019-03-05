@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :instructions
-  resources :owners
+  resources :users
   resources :vets
   resources :dogs, except: [:show, :edit, :update, :destroy]
   get "/dogs/:username/edit", to: "dogs#edit", as: "edit_dog"

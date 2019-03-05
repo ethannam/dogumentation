@@ -6,7 +6,7 @@ class DogsController < ApplicationController
   def show
     # To-do: Handle situation when bad username is returned. Show the user an error page.
     @dog = Dog.where(username: params[:username]).first
-    @owner = @dog.owner
+    @owner = @dog.user
     @instructions = @dog.instructions
     @vets = @dog.vets
   end
@@ -45,6 +45,6 @@ class DogsController < ApplicationController
   private # *************************
 
   def dog_params
-    params.require(:dog).permit(:name, :breed, :birthday, :size, :username, :img_url, :owner_id)
+    params.require(:dog).permit(:name, :breed, :birthday, :size, :username, :img_url, :user_id)
   end
 end

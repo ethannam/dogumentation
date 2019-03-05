@@ -1,4 +1,4 @@
-class Owner < ApplicationRecord
+class User < ApplicationRecord
   has_many :dogs
 
   validates :first_name, presence: true
