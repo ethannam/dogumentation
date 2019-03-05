@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :check_authorization, only: [:new, :create]
+
   def index
     @users = User.all
   end
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.valid?
+      session[:user_id] = user.id
       redirect_to user
     else
       flash[:errors] = user.errors.full_messages
@@ -39,6 +42,6 @@ class UsersController < ApplicationController
   private # ********************
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :phone_num, :email, :username, :password_digest)
+    params.require(:user).permit(:first_name, :last_name, :phone_num, :email, :username, :password)
   end
 end
