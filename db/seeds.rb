@@ -11,10 +11,10 @@ ActiveRecord::Base.connection.execute("UPDATE sqlite_sequence SET seq = (SELECT 
 ActiveRecord::Base.connection.execute("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM patients) WHERE name = \"patients\";")
 
 shaggy = Owner.create(first_name: "Shaggy", last_name: "Rogers", phone_num: "555-867-5309", email: "shaggy@gmail.com")
-charlie = Owner.create(first_name: "Charlie", last_name: "Muntz", phone_num: "", email: "")
+charlie = Owner.create(first_name: "Charlie", last_name: "Muntz", phone_num: "555-867-5443", email: "charlie@gmail.com")
 
-scooby_doo = Dog.create(name: "Scooby Doo", breed: "Great Dane", birthday: Date.new(1969,1,1), img_url: "https://www.partyrama.co.uk/wp-content/uploads/2014/05/scooby-doo-133cms-lifesize-cardboard-cutout-product-image.jpg", owner_id: shaggy.id, size: "large")
-dug = Dog.create(name: "Dug", breed: "Golden Retriever", birthday: Date.new(2009,5,29), img_url: "https://vignette.wikia.nocookie.net/disney/images/3/35/Dug-up.jpg/revision/latest?cb=20150611174103", owner_id: charlie.id, size: "medium")
+scooby_doo = Dog.create(name: "Scooby Doo", breed: "Great Dane", birthday: Date.new(1969,1,1), img_url: "https://www.partyrama.co.uk/wp-content/uploads/2014/05/scooby-doo-133cms-lifesize-cardboard-cutout-product-image.jpg", owner_id: shaggy.id, size: "large", username: "scoobydoo")
+dug = Dog.create(name: "Dug", breed: "Golden Retriever", birthday: Date.new(2009,5,29), img_url: "https://vignette.wikia.nocookie.net/disney/images/3/35/Dug-up.jpg/revision/latest?cb=20150611174103", owner_id: charlie.id, size: "medium", username: "dug")
 
 dr_kim = Vet.create(first_name: "Jenny", last_name: "Kim", address: "11 Broadway", phone_num: "123-456-7890", email: "drkim@gmail.com")
 dr_phillips = Vet.create(first_name: "Jack", last_name: "Phillips", address: "12 Broadway", phone_num: "123-456-7899", email: "drphillips@gmail.com")

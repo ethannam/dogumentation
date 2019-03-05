@@ -1,0 +1,6 @@
+<h1>All the Instructions</h1>
+<ul>
+  <% @instructions.each do |id, instruction| %>
+    <li><%= link_to "#{instruction[:header]} for #{instruction[:dog_name]}", instruction_path(id) %></li>
+  <% end %>
+</ul>

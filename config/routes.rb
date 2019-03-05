@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :instructions
   resources :owners
   resources :vets
-  resources :dogs
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :dogs, except: [:show, :edit, :update, :destroy]
+  get "/dogs/:username/edit", to: "dogs#edit", as: "edit_dog"
+  get "/dogs/:username", to: "dogs#show", as: "dog"
+  patch "/dogs/:username", to: "dogs#update"
+  delete "/dogs/:username", to: "dogs#show"
 end

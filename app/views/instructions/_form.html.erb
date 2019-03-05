@@ -1,0 +1,17 @@
+<% if flash[:errors] %>
+  <h3 style="color: red">Errors!</h3>
+  <ul>
+    <% flash[:errors].each do |error| %>
+      <li style="color: red"><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for @instruction do |f| %>
+  <%= f.label :header %><br>
+  <%= f.text_field :header %><br><br>
+  <%= f.label :content %><br>
+  <%= f.text_field :content %><br><br>
+  <%= f.label :dog %><br>
+  <%= f.collection_select :dog_id, @dogs, :id, :name %><br><br>
+  <%= f.submit %>
+<% end %>

@@ -8,4 +8,5 @@ class Dog < ApplicationRecord
   validates :name, presence: true
   validates :breed, presence: true
   validates :owner_id, presence: true
+  validates :username, uniqueness: true
 end

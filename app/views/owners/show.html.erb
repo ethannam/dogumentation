@@ -1,0 +1,10 @@
+<h1><%= @owner.to_s %></h1>
+<p>Phone number: <%= @owner.phone_num %></p>
+<p>Email: <%= @owner.email %></p>
+
+<h2>Your Dogs</h2>
+<ul>
+  <% @dogs.each do |dog| %>
+    <li><%= link_to dog.name, dog_path(dog.username) %></li>
+  <% end %>
+</ul>
