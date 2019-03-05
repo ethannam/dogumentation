@@ -8,3 +8,5 @@
     <li><%= link_to dog.name, dog_path(dog.username) %></li>
   <% end %>
 </ul>
+
+<%= button_to "Log Out", logout_path, method: :delete %>

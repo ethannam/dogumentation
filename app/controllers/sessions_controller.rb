@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :check_authorization, only: [:new, :create, :home]
+  skip_before_action :check_authorization, only: [:new, :create, :home, :destroy]
 
   def home
     render "layouts/home"
@@ -21,5 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete(:user_id)
+    redirect_to home_path
   end
 end
