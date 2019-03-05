@@ -1,15 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-Dog.delete_all
-Owner.delete_all
-Vet.delete_all
-Instruction.delete_all
-Patient.delete_all
+Dog.destroy_all
+Owner.destroy_all
+Vet.destroy_all
+Instruction.destroy_all
+Patient.destroy_all
+
+ActiveRecord::Base.connection.execute("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM dogs) WHERE name = \"dogs\";")
+ActiveRecord::Base.connection.execute("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM owners) WHERE name = \"owners\";")
+ActiveRecord::Base.connection.execute("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM vets) WHERE name = \"vets\";")
+ActiveRecord::Base.connection.execute("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM instructions) WHERE name = \"instructions\";")
+ActiveRecord::Base.connection.execute("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM patients) WHERE name = \"patients\";")
 
 shaggy = Owner.create(first_name: "Shaggy", last_name: "Rogers", phone_num: "555-867-5309", email: "shaggy@gmail.com")
 charlie = Owner.create(first_name: "Charlie", last_name: "Muntz", phone_num: "", email: "")
@@ -23,7 +22,7 @@ dr_phillips = Vet.create(first_name: "Jack", last_name: "Phillips", address: "12
 Patient.create(vet_id: dr_kim.id, dog_id: scooby_doo.id)
 Patient.create(vet_id: dr_phillips.id, dog_id: dug.id)
 
-instruction1 = Instruction.create(header: "Feeding Instructions", content: "Eats 10 times a day. Gets angry if you forget to feed him.", dog_id: scooby_doo.id)
-instruction2 = Instruction.create(header: "Walking Instructions", content: "Walk him near crime spots.", dog_id: scooby_doo.id)
-instruction3 = Instruction.create(header: "Feeding Instructions", content: "Loves to eat bacon.", dog_id: dug.id)
-instruction4 = Instruction.create(header: "Walking Instructions", content: "Plays only with his tennis ball while walking.", dog_id: dug.id)
+Instruction.create(header: "Feeding Instructions", content: "Eats 10 times a day. Gets angry if you forget to feed him.", dog_id: scooby_doo.id)
+Instruction.create(header: "Walking Instructions", content: "Walk him near crime spots.", dog_id: scooby_doo.id)
+Instruction.create(header: "Feeding Instructions", content: "Loves to eat bacon.", dog_id: dug.id)
+Instruction.create(header: "Walking Instructions", content: "Plays only with his tennis ball while walking.", dog_id: dug.id)
