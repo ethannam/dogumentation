@@ -11,7 +11,7 @@ class DogsController < ApplicationController
     @owner = @dog.user
     @instructions = @dog.instructions
     @vets = @dog.vets
-    @logged_in = logged_in?
+    @editing_privileges = logged_in? && (@owner == current_session_user)
   end
 
   def new
@@ -24,6 +24,7 @@ class DogsController < ApplicationController
 
     dog = Dog.create(dog_params)
     if dog.valid?
+      dog.profile_picture.attach(params[:dog][:profile_picture])
       redirect_to user_path(session[:user_id])
     else
       flash[:errors] = dog.errors.full_messages
@@ -38,6 +39,7 @@ class DogsController < ApplicationController
   def update
     dog = Dog.find_by(username: params[:dog][:username])
     if dog.update(dog_params)
+      dog.profile_picture.attach(params[:dog][:profile_picture])
       redirect_to user_path(session[:user_id])
     else
       flash[:errors] = dog.errors.full_messages
@@ -55,6 +57,6 @@ class DogsController < ApplicationController
   private # *************************
 
   def dog_params
-    params.require(:dog).permit(:name, :breed, :birthday, :size, :username, :img_url, :user_id)
+    params.require(:dog).permit(:name, :breed, :birthday, :size, :username, :user_id)
   end
 end

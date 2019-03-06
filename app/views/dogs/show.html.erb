@@ -1,12 +1,11 @@
-<h1><%= @dog.name %></h1>
-
-<% if @logged_in %>
-  <%= link_to "Return to your dog(s)", user_path(@owner) %>
+<% if @editing_privileges %>
+  <p><%= link_to "Return to your dog(s)", user_path(@owner) %></p>
 <% end %>
 
+<h1><%= @dog.name %></h1>
 
-<% if @dog.img_url %>
-  <%= image_tag @dog.img_url %>
+<% if @dog.profile_picture %>
+  <p><%= image_tag url_for(@dog.profile_picture), style: "max-height: 300px; width: auto;" %></p>
 <% end %>
 
 <p>Breed: <%= @dog.breed %></p>
@@ -20,7 +19,7 @@
   <h4><%= instruction.header %></h4>
   <p><%= instruction.content %></p>
 <% end %>
-<% if @logged_in %>
+<% if @editing_privileges %>
   <%= link_to "Add Instruction", new_instruction_path %>
 <% end %>
 
@@ -36,7 +35,7 @@
   <% end %>
 <% end %>
 
-<% if @logged_in %>
-  <%= link_to "Add Vet", new_vet_path %>
-  <%= button_to "Log Out", logout_path, method: :delete %>
+<% if @editing_privileges %>
+  <p><%= link_to "Add Vet", new_vet_path %></p>
+  <p><%= button_to "Log Out", logout_path, method: :delete %></p>
 <% end %>

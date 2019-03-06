@@ -2,6 +2,7 @@ class Dog < ApplicationRecord
   has_many :patients
   has_many :vets, through: :patients
   has_many :instructions
+  has_one_attached :profile_picture
   belongs_to :user
 
   validates :size, inclusion: { in: %w(small medium large) }

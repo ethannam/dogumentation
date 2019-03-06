@@ -15,8 +15,8 @@
   <%= f.date_field :birthday %><br><br>
   <%= f.label :size %><br>
   <%= f.select :size, [["Small", "small"], ["Medium", "medium"], ["Large", "large"]] %><br><br>
-  <%= f.label :img_url %><br>
-  <%= f.text_field :img_url %><br><br>
+  <%= f.label :profile_picture, "Profile picture" %><br>
+  <%= f.file_field :profile_picture %><br><br>
   <%= f.label :username, "Username (30 characters max)" %><br>
   <%= f.text_field :username %><br><br>
   <%= f.submit %>
