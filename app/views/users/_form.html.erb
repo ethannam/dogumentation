@@ -7,7 +7,7 @@
   </ul>
 <% end %>
 <%= form_for @user do |f| %>
-  <%= f.label :username %><br>
+  <%= f.label :username, "Username (30 characters max)" %><br>
   <%= f.text_field :username %><br><br>
   <%= f.label :password %><br>
   <%= f.password_field :password %><br><br>
@@ -18,8 +18,8 @@
   <%= f.label :last_name %><br>
   <%= f.text_field :last_name %><br><br>
   <%= f.label :phone_num, "Phone number" %><br>
-  <%= f.text_field :phone_num %><br><br>
+  <%= f.text_field :phone_num, placeholder: "123-444-5678" %><br><br>
   <%= f.label :email %><br>
-  <%= f.text_field :email %><br><br>
+  <%= f.text_field :email, placeholder: "rover@gmail.com" %><br><br>
   <%= f.submit %>
 <% end %>

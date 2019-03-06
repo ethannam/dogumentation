@@ -5,8 +5,8 @@ class Dog < ApplicationRecord
   belongs_to :user
 
   validates :size, inclusion: { in: %w(small medium large) }
-  validates :name, presence: true
-  validates :breed, presence: true
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :breed, presence: true, length: { maximum: 30 }
   validates :user_id, presence: true
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, length: { maximum: 30 }
 end
