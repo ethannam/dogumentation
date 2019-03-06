@@ -19,7 +19,9 @@ class DogsController < ApplicationController
   end
 
   def create
+    # Set the owner to the current session user
     params[:dog][:user_id] = session[:user_id]
+
     dog = Dog.create(dog_params)
     if dog.valid?
       redirect_to user_path(session[:user_id])
