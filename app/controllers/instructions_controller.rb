@@ -17,13 +17,14 @@ class InstructionsController < ApplicationController
 
   def new
     @instruction = Instruction.new
-    @dogs = Dog.all
+    @dogs = current_session_user.dogs
   end
 
   def create
     instruction = Instruction.create(instruction_params)
     if instruction.valid?
-      redirect_to instruction
+      dog_username = Dog.find(params[:instruction][:dog_id]).username
+      redirect_to dog_path(dog_username)
     else
       flash[:errors] = instruction.errors.full_messages
       redirect_to new_instruction_path

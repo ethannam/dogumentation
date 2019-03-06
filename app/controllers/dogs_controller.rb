@@ -1,4 +1,6 @@
 class DogsController < ApplicationController
+  skip_before_action :check_authorization, only: [:show]
+
   def index
     @dogs = Dog.all
   end
@@ -9,6 +11,7 @@ class DogsController < ApplicationController
     @owner = @dog.user
     @instructions = @dog.instructions
     @vets = @dog.vets
+    @logged_in = logged_in?
   end
 
   def new
