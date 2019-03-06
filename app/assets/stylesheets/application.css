@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+#logo {
+  font: 1.7em 'Gochi Hand', cursive;
+  padding: 0.6em;
+}
+
+#main-container {
+  width: 75%;
+  margin: auto;
+}
