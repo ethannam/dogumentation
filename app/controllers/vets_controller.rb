@@ -1,6 +1,7 @@
 class VetsController < ApplicationController
   def index
     @vets = Vet.all
+    @logged_in = logged_in?
   end
 
   def show

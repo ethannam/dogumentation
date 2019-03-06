@@ -4,3 +4,7 @@
     <li><%= link_to vet.to_s, vet %></li>
   <% end %>
 </ul>
+
+<% if @logged_in %>
+  <%= link_to "Add Vet", new_vet_path %>
+<% end %>

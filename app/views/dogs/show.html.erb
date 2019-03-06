@@ -1,5 +1,10 @@
 <h1><%= @dog.name %></h1>
 
+<% if @logged_in %>
+  <%= link_to "Return to your dog(s)", user_path(@owner) %>
+<% end %>
+
+
 <% if @dog.img_url %>
   <%= image_tag @dog.img_url %>
 <% end %>
@@ -29,4 +34,9 @@
         <li>Email: <%= vet.email %></li>
     </ul>
   <% end %>
+<% end %>
+
+<% if @logged_in %>
+  <%= link_to "Add Vet", new_vet_path %>
+  <%= button_to "Log Out", logout_path, method: :delete %>
 <% end %>
