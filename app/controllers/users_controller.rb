@@ -25,14 +25,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.valid?
-      session[:user_id] = user.id
-      redirect_to user
+    if check_password
+      user = User.create(user_params)
+      if user.valid?
+        session[:user_id] = user.id
+        redirect_to user
+      else
+        flash[:errors] = user.errors.full_messages
+        redirect_to new_user_path
+      end
     else
-      flash[:errors] = user.errors.full_messages
+      flash[:errors] = ["The 'Password' and 'Re-enter password' fields did not match. Try again."]
       redirect_to new_user_path
-    end
+    end  
   end
 
   def edit
@@ -58,6 +63,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :phone_num, :email, :username, :password)
+  end
+
+  def check_password
+    params[:user][:password] == params[:user][:reenter_password] ? true : false
   end
 
   # def check_privileges
