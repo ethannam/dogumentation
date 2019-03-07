@@ -14,12 +14,15 @@
  *= require_self
  */
 
-#logo {
-  font: 1.7em 'Gochi Hand', cursive;
-  padding: 0.6em;
+body {
+  background-image: url("cream_dust.png");
 }
 
-#main-container {
+#logo {
+  font: 1.7em 'Gochi Hand', cursive;
+}
+
+/*#main-container {
   width: 75%;
   margin: auto;
-}
+}*/
