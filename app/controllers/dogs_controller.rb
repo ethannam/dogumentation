@@ -37,12 +37,13 @@ class DogsController < ApplicationController
   end
 
   def update
-    dog = Dog.find_by(username: params[:dog][:username])
-    if dog.update(dog_params)
+    dog = Dog.find_by(id: params[:username].to_i)
+    if dog && dog.update(dog_params)
       dog.profile_picture.attach(params[:dog][:profile_picture])
       redirect_to user_path(session[:user_id])
     else
       flash[:errors] = dog.errors.full_messages
+      dog = Dog.find_by(id: params[:username].to_i)
       redirect_to edit_dog_path(dog.username)
     end
   end
