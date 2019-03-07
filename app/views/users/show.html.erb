@@ -1,17 +1,34 @@
-<h1><%= @user.to_s %></h1>
-<p>Phone number: <%= @user.phone_num %></p>
-<p>Email: <%= @user.email %></p>
-
-<h2>Your Dogs</h2>
-<ul>
+<div>
+  <h1 class="ui header"><%= @user.to_s %></h1>
+  <p>Phone number: <%= @user.phone_num %></p>
+  <p>Email: <%= @user.email %></p>
+</div>
+<div>
+  <h2 class="ui header">Your Dogs</h2>
+</div>
+<div class="ui cards">
   <% @dogs.each do |dog| %>
-    <li>
-      <%= link_to dog.name, dog_path(dog.username) %> | 
-      <%= link_to "Edit", edit_dog_path(dog.username) %> |
-      <%= link_to "Delete", dog_path(dog.username), method: :delete, data: { confirm: "Are you sure?" } %>
-    </li>
+    <div class="card">
+      <div class="image">
+        <%= image_tag url_for("stock_dog_photo.png") %>
+      </div>
+      <div class="content">
+        <%= link_to dog.name, dog_path(dog.username), class: "header" %>
+        <div class="meta">
+          <span class="date"><%= dog.breed %></span>
+        </div>
+      </div>
+      <div class="extra content">
+        <div class="two ui buttons">
+          <%= link_to "Edit", edit_dog_path(dog.username), class: "button ui" %>
+          <%= form_tag dog_path(dog.username), method: :delete, id: "form_#{dog.id}" do %>
+          <% end %>
+          <button type="submit" form="form_<%= dog.id %>", value="Submit" class="button ui negative">Delete</button>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <%= link_to "Add New Dog", new_dog_path %><br><br>
 <%= button_to "Log Out", logout_path, method: :delete %>
