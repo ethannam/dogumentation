@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   has_many :dogs
 
-  validates :username, presence: true, length: { maximum: 30 }
+  validates :username, presence: true, length: { maximum: 30 }, 
+    format: { with: /\A[a-z0-9]+\z/ , message: "can only contain lowercase letters and digits 0 to 9" }
   validates :password_digest, presence: true
   validates :first_name, presence: true, length: { maximum: 30 }
   validates :last_name, presence: true, length: { maximum: 30 }
