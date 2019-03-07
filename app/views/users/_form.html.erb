@@ -1,3 +1,12 @@
+<% if flash[:errors] %>
+  <div class="ui error message">
+    <ul class="list">
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for @user, html: { class: "ui form" } do |f| %>
   <div class="field">
     <%= f.label :username, "Username (30 characters max)" %>
@@ -23,23 +32,16 @@
       <%= f.text_field :last_name %>
     </div>
   </div>
-  <div class="field">
-    <%= f.label :phone_num, "Phone number" %>
-    <%= f.text_field :phone_num, placeholder: "123-444-5678" %>
-  </div>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email, placeholder: "rover@gmail.com" %>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :phone_num, "Phone number" %>
+      <%= f.text_field :phone_num, placeholder: "123-444-5678" %>
+    </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email, placeholder: "rover@gmail.com" %>
+    </div>
   </div>
   <div class="ui hidden divider"></div>
   <%= f.submit class: "ui fluid large blue submit button" %>
-<% end %>
-<% if flash[:errors] %>
-  <div class="ui error message">
-    <ul class="list">
-      <% flash[:errors].each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-  </div>
 <% end %>

@@ -25,21 +25,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    byebug
-
-    if check_password
-      user = User.create(user_params)
-      if user.valid?
-        session[:user_id] = user.id
-        redirect_to user
-      else
-        flash[:errors] = user.errors.full_messages
-        redirect_to new_user_path
-      end
+    user = User.new(user_params)
+    if check_password && user.save
+      session[:user_id] = user.id
+      redirect_to user
     else
-      flash[:errors] = ["The 'Password' and 'Re-enter password' fields did not match. Try again."]
+      flash[:errors] = ["'Password' and 'Re-enter password' fields do not match."]
+      flash[:errors] += user.errors.full_messages unless user.valid?
       redirect_to new_user_path
-    end  
+    end
   end
 
   def edit
