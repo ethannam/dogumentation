@@ -25,6 +25,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    byebug
+
     if check_password
       user = User.create(user_params)
       if user.valid?

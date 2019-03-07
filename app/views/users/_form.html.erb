@@ -1,25 +1,45 @@
-<% if flash[:errors] %>
-  <h3 style="color: red">Errors!</h3>
-  <ul>
-    <% flash[:errors].each do |error| %>
-      <li style="color: red"><%= error %></li>
-    <% end %>
-  </ul>
+<%= form_for @user, html: { class: "ui form" } do |f| %>
+  <div class="field">
+    <%= f.label :username, "Username (30 characters max)" %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :reenter_password, "Re-enter password" %>
+      <%= f.password_field :reenter_password %>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :phone_num, "Phone number" %>
+    <%= f.text_field :phone_num, placeholder: "123-444-5678" %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, placeholder: "rover@gmail.com" %>
+  </div>
+  <div class="ui hidden divider"></div>
+  <%= f.submit class: "ui fluid large blue submit button" %>
 <% end %>
-<%= form_for @user do |f| %>
-  <%= f.label :username, "Username (30 characters max)" %><br>
-  <%= f.text_field :username %><br><br>
-  <%= f.label :password %><br>
-  <%= f.password_field :password %><br><br>
-  <%= f.label :reenter_password, "Re-enter password" %><br>
-  <%= f.password_field :reenter_password %><br><br>
-  <%= f.label :first_name %><br>
-  <%= f.text_field :first_name %><br><br>
-  <%= f.label :last_name %><br>
-  <%= f.text_field :last_name %><br><br>
-  <%= f.label :phone_num, "Phone number" %><br>
-  <%= f.text_field :phone_num, placeholder: "123-444-5678" %><br><br>
-  <%= f.label :email %><br>
-  <%= f.text_field :email, placeholder: "rover@gmail.com" %><br><br>
-  <%= f.submit %>
+<% if flash[:errors] %>
+  <div class="ui error message">
+    <ul class="list">
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

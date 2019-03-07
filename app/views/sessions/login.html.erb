@@ -1,17 +1,36 @@
-<h1>Login Form</h1>
-
-<% if flash[:notice] %>
-  <h3>Notice</h3>
-  <ul>
-      <li><%= flash[:notice] %></li>
-  </ul>
-<% end %>
-
-
-<%= form_tag login_path do %>
-  <%= label_tag :username %><br>
-  <%= text_field_tag :username %><br><br>
-  <%= label_tag :password %><br>
-  <%= password_field_tag :password %><br><br>
-  <%= submit_tag "Log In" %>
-<% end %>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui image header">
+      <div class="content">
+        <div id="logo">🐾 &nbsp;Dogumentation</div>
+      </div>
+    </h2>
+    <%= form_tag login_path, { class: "ui large form" } do %>
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <%= text_field_tag :username, nil, placeholder: "Username" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= password_field_tag :password, nil, placeholder: "Password" %>
+          </div>
+        </div>
+        <%= submit_tag "Log In", { class: "ui fluid large blue submit button" } %>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="ui error message">
+        <ul class="list">
+            <li><%= flash[:notice] %></li>
+        </ul>
+      </div>
+    <% end %>
+    <div class="ui message">
+      New to us? <%= link_to "Register", new_user_path %>
+    </div>
+  </div>
+</div>
