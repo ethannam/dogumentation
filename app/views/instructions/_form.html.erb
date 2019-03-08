@@ -1,17 +1,26 @@
 <% if flash[:errors] %>
-  <h3 style="color: red">Errors!</h3>
-  <ul>
-    <% flash[:errors].each do |error| %>
-      <li style="color: red"><%= error %></li>
-    <% end %>
-  </ul>
+  <div class="ui error message">
+    <ul class="list">
+      <% flash[:errors].each do |error| %>
+        <li style="color: red"><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
-<%= form_for @instruction do |f| %>
-  <%= f.label :header %><br>
-  <%= f.text_field :header %><br><br>
-  <%= f.label :content %><br>
-  <%= f.text_field :content %><br><br>
-  <%= f.label :dog %><br>
-  <%= f.collection_select :dog_id, @dogs, :id, :name %><br><br>
-  <%= f.submit %>
+<%= form_for @instruction, html: { class: "ui form"} do |f| %>
+  <div class="field">
+    <%= f.label :header %>
+    <%= f.text_field :header %>
+  </div>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+  <div class="">
+    <%= f.label :dog %>
+    <%= f.collection_select :dog_id, @dogs, :id, :name %>
+  </div>
+  <div class="ui hidden divider">
+    <%= f.submit class: "ui fluid large blue submit button" %>
+  </div>
 <% end %>
