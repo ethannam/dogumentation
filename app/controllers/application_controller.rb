@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
   def home
     @logged_in = logged_in?
-    @current_user = current_session_user if logged_in?
     render "layouts/home"
   end
 

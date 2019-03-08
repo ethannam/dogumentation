@@ -1,2 +1,12 @@
-<h1>Edit User</h1>
-<%= render "form" %>
+<%= render "/layouts/loggedin_editpage_nav" %>
+
+<div class="ui two column aligned centered grid">
+  <div class="column bottom aligned content">
+    <h1 class="ui dividing header" style="padding-bottom: 10px;">Edit Profile</h1> 
+  </div>
+  <div class="four column centered row">
+    <div class="column">
+      <%= render "form" %>
+    </div> 
+  </div>
+</div>
