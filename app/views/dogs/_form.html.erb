@@ -1,23 +1,39 @@
 <% if flash[:errors] %>
-  <h3 style="color: red">Errors!</h3>
-  <ul>
-    <% flash[:errors].each do |error| %>
-      <li style="color: red"><%= error %></li>
-    <% end %>
-  </ul>
+  <div class="ui error message">
+    <ul class="list">
+      <% flash[:errors].each do |error| %>
+        <li<%= error %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
-<%= form_for @dog do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name, placeholder: "Snoopy" %><br><br>
-  <%= f.label :breed %><br>
-  <%= f.text_field :breed, placeholder: "Beagle" %><br><br>
-  <%= f.label :birthday %><br>
-  <%= f.date_field :birthday %><br><br>
-  <%= f.label :size %><br>
-  <%= f.select :size, [["Small", "small"], ["Medium", "medium"], ["Large", "large"]] %><br><br>
-  <%= f.label :profile_picture, "Profile picture" %><br>
-  <%= f.file_field :profile_picture %><br><br>
-  <%= f.label :username, "Username (30 characters max)" %><br>
-  <%= f.text_field :username %><br><br>
-  <%= f.submit %>
+<%= form_for @dog, html: { class: "ui form"} do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Snoopy" %>
+  </div>
+  <div class="field">
+    <%= f.label :breed %>
+    <%= f.text_field :breed, placeholder: "Beagle" %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %>
+    <%= f.date_field :birthday %>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :size %>
+      <%= f.select :size, [["Small", "small"], ["Medium", "medium"], ["Large", "large"]] %>
+    </div>
+    <div class="field">
+      <%= f.label :profile_picture, "Profile picture" %>
+      <%= f.file_field :profile_picture %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :username, "Username (30 characters max)" %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="ui hidden divider"></div>
+  <%= f.submit class: "ui fluid large blue submit button" %>
 <% end %>
