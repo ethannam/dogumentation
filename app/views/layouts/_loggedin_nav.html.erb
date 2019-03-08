@@ -5,7 +5,7 @@
     </div>
     <div class="right item">
       <%= link_to "Console", user_path(@user.username), class: "active item" %>
-      <%= link_to "Edit Profile", edit_user_path, class: "item" %>
+      <%= link_to "Edit Profile", edit_user_path(@user.id), class: "item" %>
       <%= form_tag logout_path, method: :delete, id: "form_logout" do %>
       <% end %>
       <button type="submit" form="form_logout", value="Submit" class="ui button item">Log Out</button>

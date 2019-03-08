@@ -6,30 +6,40 @@
       <h2 class="ui header">Your Dogs</h2>
     </div>
   </div>
-  <div class="ui middle aligned stackable grid container four column">
-    <div class="row">
-      <div class="ui cards" style="margin-left: 0.5em; margin-right: 0.5em;">
-        <% @dogs.each do |dog| %>
-          <div class="column card">
-            <div class="image">
-              <%= image_tag url_for(dog.profile_picture) %>
-            </div>
-            <div class="content">
-              <%= link_to dog.name, dog_path(dog.username), class: "header" %>
-              <div class="meta">
-                <span class="date"><%= dog.breed %></span>
-              </div>
-            </div>
-            <div class="extra content">
-              <div class="two ui buttons">
-                <%= link_to "Edit", edit_dog_path(dog.username), class: "button ui" %>
-                <%= form_tag dog_path(dog.username), method: :delete, id: "form_#{dog.id}" do %>
-                <% end %>
-                <button type="submit" form="form_<%= dog.id %>", value="Submit" class="button ui yellow">Delete</button>
-              </div>
+  <div class="ui middle aligned stackable grid container">
+    <div class="ui cards">
+      <% @dogs.each do |dog| %>
+        <div class="column card">
+          <div class="image">
+            <%= image_tag url_for(dog.profile_picture) %>
+          </div>
+          <div class="content">
+            <%= link_to dog.name, dog_path(dog.username), class: "header" %>
+            <div class="meta">
+              <span class="date"><%= dog.breed %></span>
             </div>
           </div>
-        <% end %>
+          <div class="extra content">
+            <div class="two ui buttons">
+              <%= link_to "Edit", edit_dog_path(dog.username), class: "button ui" %>
+              <%= form_tag dog_path(dog.username), method: :delete, id: "form_#{dog.id}" do %>
+              <% end %>
+              <button type="submit" form="form_<%= dog.id %>", value="Submit" class="button ui yellow">Delete</button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="column card">
+        <div class="image">
+          <%= image_tag url_for("new_dog.png") %>
+        </div>
+        <div class="content">
+          <div class="header"></div>
+          <div class="description">Click below to keep track of a new dog.</div>
+        </div>
+        <div class="extra content" style="text-align: center;">
+            <%= link_to "Add a New Dog", new_dog_path, class: "button ui blue" %>
+        </div>
       </div>
     </div>
   </div>
