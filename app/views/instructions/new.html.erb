@@ -1,9 +1,25 @@
-<div class="ui middle aligned centered grid">
+<!-- <div class="ui middle aligned centered grid">
   <div class="eight wide column">
       <h1>New Instruction</h1>
-      <%= image_tag "https://images-na.ssl-images-amazon.com/images/I/41Hm3NTKVbL._SX425_.jpg", class: "ui medium rounded image" %>
+      <%# <%= image_tag "https://images-na.ssl-images-amazon.com/images/I/41Hm3NTKVbL._SX425_.jpg", class: "ui medium rounded image" %> %>
   </div>
   <div class="eight wide column">
-    <%= render "form" %>
+    <%# <%= render "form" %> %>
+  </div>
+</div> -->
+
+<%= render "/layouts/loggedin_nav" %>
+
+<div class="ui two column aligned centered grid">
+  <div class="column bottom aligned content">
+    <h1 class="ui dividing header" style="padding-bottom: 10px;">New Instructions</h1>
+  </div>
+  <div class="four column centered row">
+    <div class="column">
+      <%= image_tag "https://images-na.ssl-images-amazon.com/images/I/41Hm3NTKVbL._SX425_.jpg" %>
+    </div>
+    <div class="column">
+      <%= render "form" %>
+    </div>
   </div>
 </div>

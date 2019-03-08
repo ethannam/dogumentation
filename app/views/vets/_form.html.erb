@@ -1,12 +1,3 @@
-<% if flash[:errors] %>
-<div class="ui error message">
-  <ul class="list">
-    <% flash[:errors].each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
 <%= form_for @vet, html: { class: "ui form"} do |f| %>
   <div class="field">
     <%= f.label :first_name %>
@@ -31,4 +22,13 @@
   <div class="ui hidden divider">
       <%= f.submit class: "ui fluid large blue submit button" %>
   </div>
+<% end %>
+<% if flash[:errors] %>
+<div class="ui error message">
+  <ul class="list">
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>

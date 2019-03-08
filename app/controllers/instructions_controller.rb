@@ -12,12 +12,14 @@ class InstructionsController < ApplicationController
 
   def show
     @instruction = Instruction.find(params[:id])
+    @user = current_session_user
     @dog = @instruction.dog
   end
 
   def new
     @instruction = Instruction.new
     @dogs = current_session_user.dogs
+    @user = current_session_user
   end
 
   def create
@@ -35,6 +37,7 @@ class InstructionsController < ApplicationController
     @instruction = Instruction.find(params[:id])
     @dog = @instruction.dog
     @dogs = Dog.all
+    @user = current_session_user
   end
 
   def update

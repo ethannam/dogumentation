@@ -1,15 +1,17 @@
 class VetsController < ApplicationController
   def index
     @vets = Vet.all
-    @logged_in = logged_in?
   end
 
   def show
     @vet = Vet.find(params[:id])
+    @editing_privileges = logged_in? && (@owner == current_session_user)
   end
 
   def new
     @vet = Vet.new
+    @user = current_session_user
+    @dogs = current_session_user.dogs
   end
 
   def create
@@ -24,6 +26,9 @@ class VetsController < ApplicationController
 
   def edit
     @vet = Vet.find(params[:id])
+    @user = current_session_user
+    @dog = @vet.dog
+    @dogs = Dog.all
   end
 
   def update
