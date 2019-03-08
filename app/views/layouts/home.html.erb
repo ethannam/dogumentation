@@ -1,6 +1,23 @@
-<%= render "/layouts/login_navigation" %>
-<div>
-  <%= image_tag "https://i.imgur.com/xyPtn4m.jpg", style: "width: 30em; height: auto;" %>
-  <h2>A better way to communicate your dog's needs</h2>
-  <p>Dogumentation helps you keep track of your dog's care instructions, so you can easily show them to others.</p>
+<%#= render "/layouts/login_navigation" %>
+
+<div class="ui inverted vertical masthead center aligned segment">
+
+  <div class="ui container">
+    <div class="ui large secondary inverted menu">
+      <div id="logo" class="header item">🐾 &nbsp;Dogumentation</div>
+      <div class="right item">
+        <a href="/register" class="ui primary button" style="margin-right: 10px;">Register</a>
+        <a href="/login" class="ui button">Log In</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui text container">
+    <h1 class="ui inverted header">
+      Document your dog's needs
+    </h1>
+    <h2>Dogumentation helps you note your dog's care instructions so you can easily share them with anybody.</h2>
+    <a href="/register" class="ui huge primary button" style="margin-top: 1.5em;">Get Started <i class="right arrow icon"></i></a>
+  </div>
+
 </div>

@@ -1,28 +1,29 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
 body {
   background-image: url("cream_dust.png");
 }
 
 #logo {
-  font: 1.7em 'Gochi Hand', cursive;
+  font: 2em 'Gochi Hand', cursive;
+  padding: 0;
 }
 
-/*#main-container {
-  width: 75%;
-  margin: auto;
-}*/
+.masthead {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("https://images.unsplash.com/photo-1532353949707-2e77707ee8a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80") !important;
+  background-size: cover !important;
+  min-height: 1000px;
+  padding: 1em 0em; 
+}
+
+.masthead h1.ui.header {
+  margin-top: 5em;
+  margin-bottom: 0em;
+  font-size: 4em;
+  font-weight: normal;
+}
+
+.masthead div.ui.text.container {
+  max-width: 780px !important;
+}
