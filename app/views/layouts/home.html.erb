@@ -1,16 +1,10 @@
-<%#= render "/layouts/login_navigation" %>
-
 <div class="ui inverted vertical masthead center aligned segment">
 
-  <div class="ui container">
-    <div class="ui large secondary inverted menu">
-      <div id="logo" class="header item">🐾 &nbsp;Dogumentation</div>
-      <div class="right item">
-        <a href="/register" class="ui primary button" style="margin-right: 10px;">Register</a>
-        <a href="/login" class="ui button">Log In</a>
-      </div>
-    </div>
-  </div>
+  <% if @logged_in %>
+    <%= render "/layouts/loggedin_homepage_nav" %>
+  <% else %>
+    <%= render "/layouts/loggedout_homepage_nav" %>
+  <% end %>
 
   <div class="ui text container">
     <h1 class="ui inverted header">

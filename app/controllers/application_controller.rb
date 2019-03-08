@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_session_user
 
   def home
+    @logged_in = logged_in?
+    @current_user = current_session_user if logged_in?
     render "layouts/home"
   end
 

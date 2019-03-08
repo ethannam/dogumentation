@@ -1,34 +1,36 @@
-<div>
-  <h1 class="ui header"><%= @user.to_s %></h1>
-  <p>Phone number: <%= @user.phone_num %></p>
-  <p>Email: <%= @user.email %></p>
-</div>
-<div>
-  <h2 class="ui header">Your Dogs</h2>
-</div>
-<div class="ui cards">
-  <% @dogs.each do |dog| %>
-    <div class="card">
-      <div class="image">
-        <%= image_tag url_for("stock_dog_photo.png") %>
-      </div>
-      <div class="content">
-        <%= link_to dog.name, dog_path(dog.username), class: "header" %>
-        <div class="meta">
-          <span class="date"><%= dog.breed %></span>
-        </div>
-      </div>
-      <div class="extra content">
-        <div class="two ui buttons">
-          <%= link_to "Edit", edit_dog_path(dog.username), class: "button ui" %>
-          <%= form_tag dog_path(dog.username), method: :delete, id: "form_#{dog.id}" do %>
-          <% end %>
-          <button type="submit" form="form_<%= dog.id %>", value="Submit" class="button ui negative">Delete</button>
-        </div>
+<%= render "/layouts/loggedin_nav" %>
+
+<div class="ui vertical stripe">
+  <div class="ui middle aligned stackable grid container" style="margin-top: 1em;">
+    <div class="column">
+      <h2 class="ui header">Your Dogs</h2>
+    </div>
+  </div>
+  <div class="ui middle aligned stackable grid container four column">
+    <div class="row">
+      <div class="ui cards" style="margin-left: 0.5em; margin-right: 0.5em;">
+        <% @dogs.each do |dog| %>
+          <div class="column card">
+            <div class="image">
+              <%= image_tag url_for(dog.profile_picture) %>
+            </div>
+            <div class="content">
+              <%= link_to dog.name, dog_path(dog.username), class: "header" %>
+              <div class="meta">
+                <span class="date"><%= dog.breed %></span>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="two ui buttons">
+                <%= link_to "Edit", edit_dog_path(dog.username), class: "button ui" %>
+                <%= form_tag dog_path(dog.username), method: :delete, id: "form_#{dog.id}" do %>
+                <% end %>
+                <button type="submit" form="form_<%= dog.id %>", value="Submit" class="button ui yellow">Delete</button>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
-
-<%= link_to "Add New Dog", new_dog_path %><br><br>
-<%= button_to "Log Out", logout_path, method: :delete %>
