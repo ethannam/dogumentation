@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :instructions
-  resources :users
+  resources :users, except: [:new]
   resources :vets
   resources :dogs, except: [:show, :edit, :update, :destroy]
 
@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy", as: "logout"
+
+  get "/register", to: "users#new", as: "new_user"
 end
