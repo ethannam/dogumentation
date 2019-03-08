@@ -2,18 +2,27 @@
   <p><%= link_to "Return to your dog(s)", user_path(@owner) %></p>
 <% end %>
 
-<h1><%= @dog.name %></h1>
+<div class="ui middle aligned centered grid">
+  <h1>🐾<%= @dog.name %></h1>
+</div>
 
-<% if @dog.profile_picture %>
-  <p><%= image_tag url_for(@dog.profile_picture), style: "max-height: 300px; width: auto;" %></p>
-<% end %>
 
-<p>Breed: <%= @dog.breed %></p>
-<p>Size: <%= @dog.size.capitalize %></p>
-<p>Birthday: <%= @dog.birthday %></p>
-<p>Owner: <%= @owner.to_s %></p>
-<p>Owner Phone Number: <%= @owner.phone_num %></p>
+<div class="ui middle aligned centered grid">
+  <% if @dog.profile_picture %>
+    <p><%= image_tag url_for(@dog.profile_picture), style: "max-height: 300px; width: auto;" %></p>
+  <% end %>
+</div>
 
+
+<div class="ui middle aligned centered grid">
+  <p>Breed: <%= @dog.breed %></p>
+  <p>Size: <%= @dog.size.capitalize %></p>
+  <p>Birthday: <%= @dog.birthday %></p>
+  <p>Owner: <%= link_to @owner.to_s, user_path(@owner) %></p>
+  <p>Owner Phone Number: <%= @owner.phone_num %></p>
+</div>
+
+<br>
 <h2>Care Instructions</h2>
 <% @instructions.each do |instruction| %>
   <h4><%= instruction.header %></h4>
