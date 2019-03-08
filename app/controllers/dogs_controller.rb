@@ -35,6 +35,7 @@ class DogsController < ApplicationController
 
   def edit
     @dog = Dog.find_by(username: params[:username])
+    @user = current_session_user
   end
 
   def update
