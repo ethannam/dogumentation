@@ -1,9 +1,15 @@
-<div class="ui middle aligned centered grid">
-  <div class="eight wide column">
-      <h1>Register</h1> 
-      <%= image_tag "https://i.imgur.com/ezd9uX3.jpg", class: "ui medium rounded image" %>
+<%#= render "/layouts/login_navigation" %>
+
+<div class="ui two column aligned centered grid" style="height: 100% ">
+  <div class="column bottom aligned content">
+    <h1 class="ui dividing header" style="padding-bottom: 10px;">Register</h1> 
   </div>
-  <div class="eight wide column">
-    <%= render "form" %>
+  <div class="four column centered row">
+    <div class="column">
+      <%= image_tag "https://media.giphy.com/media/SwImQhtiNA7io/giphy.gif" %>
+    </div>
+    <div class="column">
+      <%= render "form" %>
+    </div> 
   </div>
 </div>
