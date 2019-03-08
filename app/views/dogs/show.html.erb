@@ -23,28 +23,29 @@
 </div>
 
 <br>
-<h2>Care Instructions</h2>
-<% @instructions.each do |instruction| %>
-  <h4><%= instruction.header %></h4>
-  <p><%= instruction.content %></p>
-<% end %>
-<% if @editing_privileges %>
-  <%= link_to "Add Instruction", new_instruction_path %>
-<% end %>
 
-<h2>In Case of Emergency</h2>
-<% if @vets %>
-  <% @vets.each do |vet| %>
-    <h3><%= vet.to_s %></h3>
-    <ul>
-        <li>Office Address: <%= vet.address %></li>
-        <li>Phone Number: <%= vet.phone_num %></li>
-        <li>Email: <%= vet.email %></li>
-    </ul>
+<div class="care">
+  <h2>Care Instructions</h2>
+  <% @instructions.each do |instruction| %>
+    <h4><%= instruction.header %></h4>
+    <p><%= instruction.content %></p>
   <% end %>
-<% end %>
+  <% if @editing_privileges %>
+    <%= link_to "Add Instruction", new_instruction_path %>
+  <% end %>
 
-<% if @editing_privileges %>
-  <p><%= link_to "Add Vet", new_vet_path %></p>
-  <p><%= button_to "Log Out", logout_path, method: :delete %></p>
-<% end %>
+  <h2>In Case of Emergency</h2>
+  <% if @vets %>
+    <% @vets.each do |vet| %>
+      <h3><%= vet.to_s %></h3>
+          Office Address: <%= vet.address %><br>
+          Phone Number: <%= vet.phone_num %><br>
+          Email: <%= vet.email %>
+    <% end %>
+  <% end %>
+
+  <% if @editing_privileges %>
+    <p><%= link_to "Add Vet", new_vet_path %></p>
+    <p><%= button_to "Log Out", logout_path, method: :delete %></p>
+  <% end %>
+</div>

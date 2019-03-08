@@ -2,6 +2,10 @@ body {
   background-image: url("furley_bg.png");
 }
 
+.care {
+  text-align: center;
+}
+
 #logo {
   font: 2em 'Gochi Hand', cursive;
   padding: 0;
@@ -14,7 +18,7 @@ body {
     ), url("https://images.unsplash.com/photo-1532353949707-2e77707ee8a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80") !important;
   background-size: cover !important;
   min-height: 1000px;
-  padding: 1em 0em; 
+  padding: 1em 0em;
 }
 
 .masthead h1.ui.header {
