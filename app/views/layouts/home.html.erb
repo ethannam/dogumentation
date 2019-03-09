@@ -1,9 +1,9 @@
 <div class="ui inverted vertical masthead center aligned segment">
 
   <% if @logged_in %>
-    <%= render "/layouts/loggedin_homepage_nav" %>
+    <%= render "/layouts/home_nav_loggedin" %>
   <% else %>
-    <%= render "/layouts/loggedout_homepage_nav" %>
+    <%= render "/layouts/home_nav_loggedout" %>
   <% end %>
 
   <div class="ui text container">
