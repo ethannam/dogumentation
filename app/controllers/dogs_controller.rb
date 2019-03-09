@@ -7,8 +7,9 @@ class DogsController < ApplicationController
 
   def show
     # To-do: Handle situation when bad username is returned. Show the user an error page.
-    @dog = Dog.where(username: params[:username]).first
+    @dog = Dog.find_by(username: params[:username])
     @owner = @dog.user
+    @user = current_session_user
     @instructions = @dog.instructions
     @vets = @dog.vets
     @editing_privileges = logged_in? && (@owner == current_session_user)

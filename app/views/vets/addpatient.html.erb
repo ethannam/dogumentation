@@ -1,0 +1,29 @@
+<%= render "/layouts/loggedin_nav" %>
+
+<div class="ui two column aligned centered grid">
+  <div class="column bottom aligned content">
+    <h1 class="ui dividing header" style="padding-bottom: 10px;">Associate Vet to <%= @dog.name %></h1> 
+  </div>
+  <div class="four column centered row">
+    <div class="column">
+      <%= form_tag "/dogs/#{@dog.username}/addvet", method: :post, class: "ui form" do %>
+        <div class="field">
+          <%= label_tag :vet %>
+          <%= collection_select :vet, :id, @vets, :id, :to_s %>
+        </div>
+        <div class="ui hidden divider"></div>
+        <%= submit_tag "Add Vet", class: "ui fluid large blue submit button" %>
+      <% end %>
+      <% if flash[:errors] %>
+      <div class="ui error message">
+        <ul class="list">
+          <% flash[:errors].each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div> 
+  </div>
+</div>
+

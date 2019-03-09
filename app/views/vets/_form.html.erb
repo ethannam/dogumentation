@@ -19,6 +19,12 @@
     <%= f.label :email %>
     <%= f.text_field :email, placeholder: "dr_rover@gmail.com" %>
   </div>
+  <div>
+    <%= f.label :dog %>
+    <%= f.fields_for :patients do |builder| %>
+      <%= builder.collection_select :dog_id, @dogs, :id, :name %>
+    <% end %>
+  </div>
   <div class="ui hidden divider">
       <%= f.submit class: "ui fluid large blue submit button" %>
   </div>

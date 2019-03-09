@@ -1,51 +1,47 @@
-<% if @editing_privileges %>
-  <p><%= link_to "Return to your dog(s)", user_path(@owner) %></p>
-<% end %>
+<%= render "/layouts/loggedin_nav" %>
 
-<div class="ui middle aligned centered grid">
-  <h1>🐾<%= @dog.name %></h1>
+<div class="ui two column aligned centered grid">
+  <div class="column bottom aligned content">
+    <h1 class="ui dividing header" style="padding-bottom: 10px;"><%= @dog.name %></h1> 
+  </div>
+  <div class="four column centered row">
+    <div class="column">
+      <%= image_tag url_for(@dog.profile_picture) %>
+    </div>
+    <div class="column">
+      <h2 class="ui header dividing">Details</h2>
+      <p><span style="font-weight: bold;">Breed</span> — <%= @dog.breed %></p>
+      <p><span style="font-weight: bold;">Size</span> — <%= @dog.size.capitalize %></p>
+      <p><span style="font-weight: bold;">Birthday</span> — <%= @dog.birthday %></p>
+      <p><span style="font-weight: bold;">Owner</span> — <%= link_to @owner.to_s, user_path(@owner) %></p>
+      <p><span style="font-weight: bold;">Owner Phone Number</span> — <%= @owner.phone_num %></p>
+      <div class="care">
+        <h2 class="ui header dividing" style="margin-top: 2em;">Care Instructions</h2>
+        <% @instructions.each do |instruction| %>
+          <h3><%= instruction.header %></h3>
+          <p><%= instruction.content %></p>
+        <% end %>
+        <% if @editing_privileges %>
+          <%= link_to "Add Instruction", new_instruction_path %>
+        <% end %>
+
+        <h2 class="ui header dividing" style="margin-top: 2em;">In Case of Emergency</h2>
+        <% if @vets %>
+          <% @vets.each do |vet| %>
+            <h3><%= vet.to_s %></h3>
+                Office Address: <%= vet.address %><br>
+                Phone Number: <%= vet.phone_num %><br>
+                Email: <%= vet.email %>
+          <% end %>
+        <% end %>
+
+        <% if @editing_privileges %>
+          <p></p>
+          <p><%= link_to "Add Vet", "/dogs/#{@dog.username}/addvet" %></p>
+        <% end %>
+      </div>
+    </div> 
+  </div>
 </div>
 
 
-<div class="ui middle aligned centered grid">
-  <% if @dog.profile_picture %>
-    <p><%= image_tag url_for(@dog.profile_picture), style: "max-height: 300px; width: auto;" %></p>
-  <% end %>
-</div>
-
-
-<div class="ui middle aligned centered grid">
-  <p>Breed: <%= @dog.breed %></p>
-  <p>Size: <%= @dog.size.capitalize %></p>
-  <p>Birthday: <%= @dog.birthday %></p>
-  <p>Owner: <%= link_to @owner.to_s, user_path(@owner) %></p>
-  <p>Owner Phone Number: <%= @owner.phone_num %></p>
-</div>
-
-<br>
-
-<div class="care">
-  <h2>Care Instructions</h2>
-  <% @instructions.each do |instruction| %>
-    <h4><%= instruction.header %></h4>
-    <p><%= instruction.content %></p>
-  <% end %>
-  <% if @editing_privileges %>
-    <%= link_to "Add Instruction", new_instruction_path %>
-  <% end %>
-
-  <h2>In Case of Emergency</h2>
-  <% if @vets %>
-    <% @vets.each do |vet| %>
-      <h3><%= vet.to_s %></h3>
-          Office Address: <%= vet.address %><br>
-          Phone Number: <%= vet.phone_num %><br>
-          Email: <%= vet.email %>
-    <% end %>
-  <% end %>
-
-  <% if @editing_privileges %>
-    <p><%= link_to "Add Vet", new_vet_path %></p>
-    <p><%= button_to "Log Out", logout_path, method: :delete %></p>
-  <% end %>
-</div>

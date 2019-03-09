@@ -41,6 +41,18 @@ class VetsController < ApplicationController
     end
   end
 
+  def addpatient
+    @user = current_session_user
+    @vets = Vet.all
+    @dog = Dog.find_by(username: params[:username])
+  end
+
+  def updatepatient
+    dog = Dog.find_by(username: params[:username])
+    patient = Patient.create(dog_id: dog.id, vet_id: params[:vet][:id].to_i)
+    redirect_to dog_path(dog.username)
+  end
+
   private # ********************
 
   def vet_params

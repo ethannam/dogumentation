@@ -5,7 +5,9 @@
     </div>
     <div class="right item">
       <a href="/register" class="ui button green" style="margin-right: 10px;">Console</a>
-      <a href="/logout" class="ui button">Log Out</a>
+      <%= form_tag logout_path, method: :delete, id: "form_logout" do %>
+      <% end %>
+      <button type="submit" form="form_logout", value="Submit" class="ui button item">Log Out</button>
     </div>
   </div>
 </div>

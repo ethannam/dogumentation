@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root "application#home", as: "home"
 
   get "/dogs/:username/edit", to: "dogs#edit", as: "edit_dog"
+  get "/dogs/:username/addvet", to: "vets#addpatient"
+  post "/dogs/:username/addvet", to: "vets#updatepatient"
   get "/dogs/:username", to: "dogs#show", as: "dog"
   patch "/dogs/:username", to: "dogs#update"
   delete "/dogs/:username", to: "dogs#destroy"

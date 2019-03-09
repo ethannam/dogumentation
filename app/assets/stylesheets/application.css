@@ -2,10 +2,6 @@ body {
   background-image: url("furley_bg.png");
 }
 
-.care {
-  text-align: center;
-}
-
 #logo {
   font: 2em 'Gochi Hand', cursive;
   padding: 0;
