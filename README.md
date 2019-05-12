@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Web App for dog owners to share with dog sitters pet caring instructions when they are away.
 
-Things you may want to cover:
+* Ruby 2.6.1
 
-* Ruby version
+* Sqlite3 database using ActiveRecord
 
-* System dependencies
+* Run rails s to start Rails server
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* Finished
+* Open http://localhost:3000/ to run
